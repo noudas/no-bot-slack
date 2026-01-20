@@ -17,7 +17,7 @@ app = App(
 
 # 2. Define the command handler
 @app.command("/no")
-def handle_no_command(ack, say):
+def handle_no_command(ack, respond):
     # Acknowledge the command immediately (required by Slack within 3 seconds)
     ack()
     
@@ -49,4 +49,5 @@ def slack_events():
 
 # This block allows you to run it locally if needed
 if __name__ == "__main__":
+
     flask_app.run(port=3000)
