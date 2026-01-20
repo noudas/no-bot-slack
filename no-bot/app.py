@@ -29,7 +29,7 @@ def handle_no_command(ack, respond):
             data = response.json()
             # Extract the "reason" from the API response
             answer = data.get("reason", "No.")
-            respond(answer)
+            respond(response_type="in_channel", text=answer)
         else:
             respond(f"Oops, I couldn't find a 'no' right now. (API Status: {response.status_code})")
             
@@ -51,4 +51,5 @@ def slack_events():
 if __name__ == "__main__":
 
     flask_app.run(port=3000)
+
 
