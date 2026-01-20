@@ -29,14 +29,14 @@ def handle_no_command(ack, respond):
             data = response.json()
             # Extract the "reason" from the API response
             answer = data.get("reason", "No.")
-            say(answer)
+            respond(answer)
         else:
-            say(f"Oops, I couldn't find a 'no' right now. (API Status: {response.status_code})")
+            respond(f"Oops, I couldn't find a 'no' right now. (API Status: {response.status_code})")
             
     except Exception as e:
         # Log the error to the console/server logs
         print(f"Error fetching data: {e}")
-        say("Something went wrong while trying to say no.")
+        respond("Something went wrong while trying to say no.")
 
 # 3. Setup Flask to listen for web requests
 flask_app = Flask(__name__)
@@ -51,3 +51,4 @@ def slack_events():
 if __name__ == "__main__":
 
     flask_app.run(port=3000)
+
